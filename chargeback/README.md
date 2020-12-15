@@ -28,10 +28,10 @@ envsubst < ./chargeback-rules.yaml | oc apply -f - -n ${MYPROJECT}
 The label on projects (namespaces) is cluster dependent -- they need to be specific for your needs.  For this example, we will add some labels to namespaces as approriate.  Replacing <NAMESPACE-PROJECT#> with your namespaces.
 
 ```bash
-oc label namespace <NAMESPACE-PROJECT1> ${!PROM_LABEL}=team1
-oc label namespace <NAMESPACE-PROJECT2> ${!PROM_LABEL}=team1
-oc label namespace <NAMESPACE-PROJECT3> ${!PROM_LABEL}=team2
-oc label namespace <NAMESPACE-PROJECT4> ${!PROM_LABEL}=team2
+oc label namespace <NAMESPACE-PROJECT1> team=team1
+oc label namespace <NAMESPACE-PROJECT2> team=team1
+oc label namespace <NAMESPACE-PROJECT3> team=team2
+oc label namespace <NAMESPACE-PROJECT4> team=team2
 ```
 
 Finally, Create the dashboard in a namespace that is watched by the grafana operator.
