@@ -14,10 +14,10 @@ export DEPLOY_NAMESPACE=my-grafana
 oc new-project $DEPLOY_NAMESPACE
 ```
 
-Optional - add network policies and quota to mimic production env 
+### Optional - Apply network policies and quota to mimic the production environment
 
 ```bash
-helm upgrade -i --create-namespace admin helm/admin -n ${DEPLOY_NAMESPACE}
+# helm upgrade -i --create-namespace admin helm/admin -n ${DEPLOY_NAMESPACE}
 ```
 
 ## Deploy operator
