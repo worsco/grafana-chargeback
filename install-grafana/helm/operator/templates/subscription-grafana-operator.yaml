@@ -1,0 +1,13 @@
+---
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: grafana-operator
+spec:
+  channel: alpha
+  installPlanApproval: {{ .Values.grafana_operator.installPlanApproval }}
+  name: grafana-operator
+  source: community-operators
+  sourceNamespace: openshift-marketplace
+  startingCSV: grafana-operator.v3.5.0
+...
