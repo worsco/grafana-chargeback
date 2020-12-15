@@ -17,13 +17,13 @@ oc new-project $DEPLOY_NAMESPACE
 ### Optional - Apply network policies and quota to mimic the production environment
 
 ```bash
-# helm upgrade -i --create-namespace admin helm/admin -n ${DEPLOY_NAMESPACE}
+# helm upgrade --install --create-namespace admin helm/admin -n ${DEPLOY_NAMESPACE}
 ```
 
 ## Deploy operator
 
 ```bash
-helm upgrade -i --create-namespace grafana-operator helm/operator -n ${DEPLOY_NAMESPACE}
+helm upgrade --install --create-namespace grafana-operator helm/operator -n ${DEPLOY_NAMESPACE}
 ```
 
 ## Manually approve the InstallPlan to install the grafana-operator
@@ -61,7 +61,7 @@ This will update the json files within helm/grafana/dashboards/openshift-monitor
 ## Deploy grafana
 
 ```bash
-helm upgrade -i --create-namespace grafana helm/grafana \
+helm upgrade --install --create-namespace grafana helm/grafana \
 -n ${DEPLOY_NAMESPACE} \
 --set grafana.datasources.prometheus.openshift_monitoring.password=$(oc extract secret/grafana-datasources -n openshift-monitoring --keys=prometheus.yaml --to=- | grep -zoP '"basicAuthPassword":\s*"\K[^\s,]*(?=\s*",)')
 ```
