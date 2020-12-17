@@ -5,24 +5,24 @@ Install the chargeback demo into the namespace "chargeback-demo"
 
 ## Assign variables
 ```bash
-export MYPROJECT=chargeback-demo
+export DEPLOY_NAMESPACE=chargeback-demo
 export PROM_LABEL=team
 ```
 
 ## Create project
 ```bash
-oc new-project ${MYPROJECT}
+oc new-project ${DEPLOY_NAMESPACE}
 ```
 
 ## Label on the namespace so that prometheus will read in the PrometheusRule resource
 ```bash
-oc label namespace ${MYPROJECT} openshift.io/cluster-monitoring='true'
+oc label namespace ${DEPLOY_NAMESPACE} openshift.io/cluster-monitoring='true'
 ```
 
 ## Create the PrometheusRule in the namespace
 
 ```bash
-envsubst < ./chargeback-rules.yaml | oc apply -f - -n ${MYPROJECT}
+envsubst < ./chargeback-rules.yaml | oc apply -f - -n ${DEPLOY_NAMESPACE}
 ```
 
 The label on projects (namespaces) is cluster dependent -- they need to be specific for your needs.  For this example, we will add some labels to namespaces as approriate.  Replacing <NAMESPACE-PROJECT#> with your namespaces.
